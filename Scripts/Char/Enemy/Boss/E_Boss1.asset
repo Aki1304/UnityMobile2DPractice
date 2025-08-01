@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57481ab3556515f4182ae667b616c3f1, type: 3}
+  m_Name: E_Boss1
+  m_EditorClassIdentifier: 
+  unitCode: 2
+  dataName: "\uBCF4\uC2A4_\uBF08\uB2E4\uADC0"
+  dataATk: 0
+  dataDef: 0
+  dataCri: 0
+  dataCriDmg: 0
+  dataHP: 100
+  dataUlt: 0
+  dataSpeed: 105
+  _playerSprite: {fileID: 2101262304, guid: 42936486cb29fdb46ac4a9b7f7e85fc5, type: 3}
+  _ultIconSprite: {fileID: 0}

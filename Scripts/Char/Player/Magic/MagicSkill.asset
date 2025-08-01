@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b045ee633d32e0e4385c3054657de068, type: 3}
+  m_Name: MagicSkill
+  m_EditorClassIdentifier: 
+  _animCon: {fileID: 9100000, guid: 5d92be5241b81b14fb63dcc7d85070ca, type: 2}
+  normalAttack:
+    hits: 1
+    range: 3
+    damage: 0.3
+    skillType: 0
+    type: 1
+    actionType: 0
+    effectType: 0
+    info: 
+  skill:
+    hits: 4
+    range: 5
+    damage: 0.15
+    skillType: 1
+    type: 0
+    actionType: 0
+    effectType: 1
+    info: 
+  ultimate:
+    hits: 3
+    range: 5
+    damage: 0.4
+    skillType: 2
+    type: 1
+    actionType: 0
+    effectType: 1
+    info: 
+  passive:
+    hits: 0
+    range: 0
+    damage: 0
+    skillType: 0
+    type: 0
+    actionType: 0
+    effectType: 0
+    info: "\uB9C8\uBC95\uC0AC\uAC00 \uAD81\uADF9\uAE30 \uC0AC\uC6A9 \uC9C1\uD6C4
+      \uC804\uD22C \uC2A4\uD0AC\uC744 1 \uD68D\uB4DD\uD569\uB2C8\uB2E4."

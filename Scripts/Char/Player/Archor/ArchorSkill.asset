@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b045ee633d32e0e4385c3054657de068, type: 3}
+  m_Name: ArchorSkill
+  m_EditorClassIdentifier: 
+  _animCon: {fileID: 9100000, guid: a8f5f50ad611a6a4ca5cc205404aaf2f, type: 2}
+  normalAttack:
+    hits: 2
+    range: 1
+    damage: 0.35
+    skillType: 0
+    type: 0
+    actionType: 0
+    effectType: 0
+    info: 
+  skill:
+    hits: 3
+    range: 1
+    damage: 0.35
+    skillType: 1
+    type: 0
+    actionType: 0
+    effectType: 0
+    info: 
+  ultimate:
+    hits: 1
+    range: 3
+    damage: 1.2
+    skillType: 2
+    type: 1
+    actionType: 0
+    effectType: 0
+    info: 
+  passive:
+    hits: 1
+    range: 1
+    damage: 0.8
+    skillType: 3
+    type: 0
+    actionType: 5
+    effectType: 0
+    info: "\uC544\uAD70\uC774 \uC801\uAD70\uC5D0\uAC8C \uD53C\uD574\uB97C \uC785\uD78C\uAC8C
+      \uB204\uC801 3\uD68C\uB9C8\uB2E4 \uB9C8\uC9C0\uB9C9\uC73C\uB85C \uD0C0\uACA9\uD55C
+      \uC801\uC744 \uC0C1\uB300\uB85C \uCD94\uAC00 \uACF5\uACA9\uC744 \uAC00\uD55C\uB2E4."

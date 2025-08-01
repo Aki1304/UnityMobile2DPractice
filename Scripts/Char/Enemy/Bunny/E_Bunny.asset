@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57481ab3556515f4182ae667b616c3f1, type: 3}
+  m_Name: E_Bunny
+  m_EditorClassIdentifier: 
+  unitCode: 1
+  dataName: "\uBB34? \uC18C\uC720 \uBC84\uB2C8"
+  dataATk: 60
+  dataDef: 30
+  dataCri: 10
+  dataCriDmg: 50
+  dataHP: 45
+  dataUlt: 0
+  dataSpeed: 50
+  _playerSprite: {fileID: -1357990180, guid: 5103a6a8ae104bc4dbd69fe6ce3ec6b6, type: 3}
+  _ultIconSprite: {fileID: 0}
