@@ -18,10 +18,23 @@ public class EffectDamage : MonoBehaviour
         _animator.runtimeAnimatorController = null;     // 애니메이터 컨트롤러 초기화
     }
 
-    public void OnPassAnimEvent(GameObject casterObject, List<GameObject> targets, SkillMetaData data)
+    public void OnPassAnimEvent(GameObject casterObject, List<GameObject> targets, SkillMetaData data, int idx)
     {
         caster = casterObject.GetComponent<Character>();
-        tempTargets = targets;
+
+        // 이펙트에 따른 구분
+        switch (data.effectType)
+        {
+            case EffectPositionType.PerTarget:
+                tempTargets = new List<GameObject>();
+                tempTargets.Add(targets[idx]);  // 타겟 리스트에 현재 타겟 추가
+                break;
+            case EffectPositionType.SingleCenter:
+                tempTargets = targets;          // 타겟 리스트를 그대로 사용
+                break;
+            default:    throw new NotImplementedException();
+        }
+
         tempData = data;
 
         tmpCount = data.hits;

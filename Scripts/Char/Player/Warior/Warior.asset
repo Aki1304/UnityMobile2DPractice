@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitCode: 0
   dataName: "\uC6CC\uB9AC\uC5B4"
-  dataATk: 50
+  dataATk: 55
   dataDef: 15
-  dataCri: 5
+  dataCri: 10
   dataCriDmg: 50
-  dataHP: 10
-  dataUlt: 20
-  dataSpeed: 100
-  _playerSprite: {fileID: 1890531540, guid: a2c722538eb5e4b4182803926377575b, type: 3}
+  dataHP: 100
+  dataUlt: 10
+  dataSpeed: 90
+  _playerSprite: {fileID: -1857637221, guid: a2c722538eb5e4b4182803926377575b, type: 3}
   _ultIconSprite: {fileID: 21300000, guid: 00f22bc57e65abd4a92fa0ebe38acb8b, type: 3}
   _buffSprite: {fileID: 21300000, guid: 0222adc58ca61b549a000f37319697e3, type: 3}

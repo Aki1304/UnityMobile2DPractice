@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitCode: 0
   dataName: "\uB79C\uC11C"
-  dataATk: 50
-  dataDef: 15
-  dataCri: 10
-  dataCriDmg: 60
+  dataATk: 45
+  dataDef: 20
+  dataCri: 5
+  dataCriDmg: 50
   dataHP: 120
   dataUlt: 50
   dataSpeed: 90

@@ -4,10 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static Character;
-using static UnityEngine.GraphicsBuffer;
 
-public enum EnemyType { Boss, Normal }
 public class Enemy : Character
 {
     public EnemyType _enemyType;            // 인스펙터에서 설정
@@ -121,7 +118,7 @@ public class Enemy : Character
             // 이펙트 작업
             EffectDamage effect = obj.GetComponent<EffectDamage>();             // 공격해야 할 대상 전해주기
             effect.ResetEffectAnimator();                                       // 이펙트 애니메이터 초기화
-            effect.OnPassAnimEvent(caster, targets, data);                      // 이펙트가 애니메이션 이벤트를 통해 공격을 전달할 수 있도록 설정
+            effect.OnPassAnimEvent(caster, targets, data, i);                   // 이펙트가 애니메이션 이벤트를 통해 공격을 전달할 수 있도록 설정
 
             // 애니메이터 작업
             Animator animator = obj.GetComponent<Animator>();

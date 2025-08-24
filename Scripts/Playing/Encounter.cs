@@ -58,7 +58,8 @@ public class Encounter : MonoBehaviour
     {
         PassEncounter();
         OtherClassInit();
-        Helper.PoolManager.InitPool();
+        PoolSetting();
+
     }
 
     void OtherClassInit()
@@ -86,6 +87,10 @@ public class Encounter : MonoBehaviour
         _context._targetSelecter = _targetSelector;
     }
 
+    void PoolSetting()
+    {
+        Helper.PoolManager.InitEncounterPool(_context._dual._poolEffectParent,_context._dual._poolFontParent);
+    }
 
     public IEnumerator BattleEncounter()
     {

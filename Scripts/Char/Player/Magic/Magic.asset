@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Magic
   m_EditorClassIdentifier: 
   unitCode: 0
-  dataName: "\uB9C8\uBC95\uC0AC"
+  dataName: "\uB9E4\uC9C0\uC158"
   dataATk: 75
   dataDef: 5
   dataCri: 15
   dataCriDmg: 75
   dataHP: 50
-  dataUlt: 15
+  dataUlt: 10
   dataSpeed: 85
-  _playerSprite: {fileID: 807218725, guid: e464ec4f2ef82cd429e3cd12c4872e45, type: 3}
+  _playerSprite: {fileID: -732069798, guid: e464ec4f2ef82cd429e3cd12c4872e45, type: 3}
   _ultIconSprite: {fileID: 21300000, guid: e87584ab005fedc449f80aee8a2584dc, type: 3}
   _buffSprite: {fileID: 0}

@@ -21,7 +21,8 @@ MonoBehaviour:
     type: 0
     actionType: 0
     effectType: 0
-    info: 
+    info: "\uB2E8\uC77C \uC801\uC5D0\uAC8C 1\uD68C\uB97C \uACF5\uACA9\uB825\uC758
+      65%\uB85C \uB370\uBBF8\uC9C0\uB97C \uAC00\uD569\uB2C8\uB2E4."
   skill:
     hits: 1
     range: 1
@@ -30,7 +31,8 @@ MonoBehaviour:
     type: 0
     actionType: 0
     effectType: 0
-    info: 
+    info: "\uB2E8\uC77C \uC801\uC5D0\uAC8C 1\uD68C\uB97C \uACF5\uACA9\uB825\uC758
+      90%\uB85C \uB370\uBBF8\uC9C0\uB97C \uAC00\uD569\uB2C8\uB2E4."
   ultimate:
     hits: 1
     range: 3
@@ -39,13 +41,17 @@ MonoBehaviour:
     type: 1
     actionType: 0
     effectType: 1
-    info: 
+    info: "\uC6CC\uB9AC\uC5B4\uAC00 \uC0B4\uC544\uC788\uB294\uB3D9\uC548 \uC544\uAD70\uC5D0\uAC8C
+      \uC6CC\uB9AC\uC5B4\uC758 \uACF5\uACA9\uB825 20%\uB9CC\uD07C \uC99D\uAC00\uD558\uB294
+      \uBC84\uD504\uB97C \uC81C\uACF5\uD569\uB2C8\uB2E4."
   passive:
     hits: 0
     range: 0
     damage: 0
-    skillType: 0
-    type: 0
-    actionType: 0
+    skillType: 3
+    type: 1
+    actionType: 5
     effectType: 0
-    info: 
+    info: "\uC0B4\uC544\uC788\uB294 \uB3D9\uC548 \uC544\uAD70\uC5D0\uAC8C \uC6CC\uB9AC\uC5B4
+      \uACF5\uACA9\uB825\uC758 20%\uB9CC\uD07C \uACF5\uACA9\uB825 \uC99D\uAC00 \uBC84\uD504\uB97C
+      \uC81C\uACF5\uD569\uB2C8\uB2E4."

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
 using UnityEngine;
+using static UnityEngine.UI.CanvasScaler;
 
 public class TurnManager : MonoBehaviour
 {
@@ -72,7 +73,7 @@ public class TurnManager : MonoBehaviour
                 _context._dual._buttonSelectType = SkillType.normal;
             }
 
-            allCharStats.RemoveAt(0); // 항상 첫 번째를 처리하므로 index 안전
+            allCharStats.RemoveAt(0);                                    // 항상 첫 번째를 처리하므로 index 안전
             OnAddTurn?.Invoke();
 
             yield return null;
@@ -175,7 +176,7 @@ public class TurnManager : MonoBehaviour
     {
         var extra = (current, type);
 
-        // Extra큐에 넣어버리기
+        // Extra에 넣어버리기
         _extraTurn.Add(extra);
         OnExtraTurn?.Invoke();
     }
@@ -213,7 +214,7 @@ public class TurnManager : MonoBehaviour
 
         void StartTun()
         {
-            SetCamTurn();
+            _context._encounter._camMove.CurrentCameraTurn(unit);
             _gameSceneUI._encounterUI.OnActiveRouTineUI(false);
 
             GetCurEndTurn = false;                                // 턴 대기
@@ -238,7 +239,7 @@ public class TurnManager : MonoBehaviour
         {
             Helper.KeySet.GetEncounterTouch = true;               // 인카운터 터치 활성화   
             GetCurEndTurn = false;                                // 턴 대기
-            SetCamTurn();                                         // 카메라 설정
+            _context._encounter._camMove.CurrentCameraTurn(GetCurUnit); // 카메라 설정
             _context._encounterUI.OnActiveRouTineUI(true);        // 루틴 활용한 ui
             GetCurUnit.MyTurn();                                  // 자기 턴에 할 일
         }
@@ -280,50 +281,20 @@ public class TurnManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        Helper.KeySet.GetEncounterTouch = false;         // 인카운터 터치 활성화
+        Helper.KeySet.GetEncounterTouch = false;               // 인카운터 터치 활성화
 
-        _context._dual._buttonSelectType = SkillType.normal;
-        _gameSceneUI.ResetUI();                          // UI 초기화
+        // 추가 공격이나 궁극기에는 버프 차감 X
+        if(_context._dual._buttonSelectType == SkillType.normal || _context._dual._buttonSelectType == SkillType.skill)
+        {
+            GetCurUnit._charBuffManager.CheckTurnBasedBuff();  // 턴 기반 버프 체크
+        }
+
+        _context._dual._buttonSelectType = SkillType.normal;   // 기본 타입으로 초기화
+        _gameSceneUI.ResetUI();                                // UI 초기화
         _dual.CharTurnEnd();
-        _context._stage.ResetEnemyPos();                // 적 위치 초기화
+        _context._stage.ResetEnemyPos();                       // 적 위치 초기화
 
         yield return new WaitForSeconds(0.5f);
-    }
-
-    public void SetCamTurn()
-    {
-        int unitcode = GetCurUnit.GetStats.GetUnitCode;
-
-        if (unitcode == 0)
-        {
-            int idxPos = Array.IndexOf(GetPartyInfo, GetCurUnit.gameObject);
-
-            if (idxPos < 0)
-            {
-                Debug.LogWarning("현재 유닛이 파티 정보에 없습니다.");
-                return;
-            }
-
-            for (int i = 0; i < 4; i++)
-            {
-                if (GetPartyInfo[i] is null) { continue; }
-
-                if (i == idxPos) GetPartyInfo[i].SetActive(true);
-                else GetPartyInfo[i].SetActive(false);
-            }
-
-            _context._encounter._camMove.SetCameraPosition(idxPos);
-        }
-
-        if (unitcode != 0)
-        {
-            foreach (var unit in GetPartyInfo)
-            {
-                if(unit == null) continue;
-                unit.SetActive(true);
-            }
-            _context._encounter._camMove.SetEnemyCamera();
-        }
     }
 
 }

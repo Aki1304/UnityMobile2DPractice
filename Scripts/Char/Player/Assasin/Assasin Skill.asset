@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b045ee633d32e0e4385c3054657de068, type: 3}
+  m_Name: Assasin Skill
+  m_EditorClassIdentifier: 
+  _animCon: {fileID: 9100000, guid: ae1240eb76b73804a9d38cb1bf126639, type: 2}
+  normalAttack:
+    hits: 2
+    range: 1
+    damage: 0.25
+    skillType: 0
+    type: 0
+    actionType: 0
+    effectType: 0
+    info: "\uB2E8\uC77C \uC801\uC5D0\uAC8C 2\uD68C\uB97C \uACF5\uACA9\uB825\uC758
+      25%\uB85C \uB370\uBBF8\uC9C0\uB97C \uAC00\uD569\uB2C8\uB2E4."
+  skill:
+    hits: 1
+    range: 1
+    damage: 0.85
+    skillType: 1
+    type: 0
+    actionType: 0
+    effectType: 0
+    info: "\uB2E8\uC77C \uC801\uC5D0\uAC8C 1\uD68C\uB97C \uACF5\uACA9\uB825\uC758
+      85%\uB85C \uB370\uBBF8\uC9C0\uB97C \uAC00\uD569\uB2C8\uB2E4."
+  ultimate:
+    hits: 1
+    range: 1
+    damage: 1.5
+    skillType: 2
+    type: 0
+    actionType: 0
+    effectType: 0
+    info: "\uB2E8\uC77C \uC801\uC5D0\uAC8C 1\uD68C\uB97C \uACF5\uACA9\uB825\uC758
+      150%\uB85C \uB370\uBBF8\uC9C0\uB97C \uAC00\uD569\uB2C8\uB2E4."
+  passive:
+    hits: 1
+    range: 1
+    damage: 0.5
+    skillType: 3
+    type: 0
+    actionType: 0
+    effectType: 0
+    info: "\uC5B4\uC314\uC2E0\uC774 \uAD81\uADF9\uAE30\uB97C \uC0AC\uC6A9 \uC2DC
+      \uC2A4\uD0DD\uC744 \uC313\uACE0 \uB204\uC801 \uC2A4\uD0DD\uC774 2\uD68C\uAC00
+      \uB418\uBA74 \uB2E8\uC77C \uCD94\uAC00 \uACF5\uACA9\uC744 \uAC00\uD558\uACE0
+      \uC790\uC2E0\uC5D0\uAC8C \uD06C\uB9AC\uD2F0\uCEEC \uD53C\uD574\uB7C9\uC744
+      50% \uC99D\uAC00\uC2DC\uD0A4\uB294 \uBC84\uD504\uB97C 2\uD134 \uB3D9\uC548
+      \uC801\uC6A9 \uC2DC\uD0B5\uB2C8\uB2E4."

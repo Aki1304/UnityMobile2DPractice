@@ -15,7 +15,7 @@ public class DualManager : MonoBehaviour
 
     // 이벤트 구독을 위해 Encounter 연결
     public EncounterContext _context { get; set; }
-    public GameObject[] _instanceParty { get; set; }    
+    public GameObject[] _instanceParty { get; set; }
 
 
     #region 스킬 포인트 관련
@@ -65,10 +65,12 @@ public class DualManager : MonoBehaviour
         // 추가 스택
         foreach(var obj in unitObjects)
         {
+            if(obj is null) continue;
+
             Character unit = obj.GetComponent<Character>();
             IPassiveExtraAttack extra = unit as IPassiveExtraAttack;
 
-            if (unit is null || extra is null) continue;
+            if (extra is null) continue;
 
             _context._encounterUI.OnStackRoutineUI(unit);
         }
@@ -78,6 +80,8 @@ public class DualManager : MonoBehaviour
         // 버프 패시브 임시 리스트에 넣기
         foreach(var obj in unitObjects)
         {
+            if(obj is null) continue;
+
             Character unit = obj.GetComponent<Character>();
             List<IBuffInfo> listBuff = unit._charBuffManager.GetActiveBuffs;
 
@@ -95,6 +99,8 @@ public class DualManager : MonoBehaviour
         // 버프 적용
         foreach(var obj in unitObjects)
         {
+            if(obj is null) continue;
+
             Character unit = obj.GetComponent<Character>();
             foreach(var buff in tempBuffList)
             {

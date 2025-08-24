@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using UnityEditor.Rendering;
 using UnityEngine;
 using static UnityEngine.UI.CanvasScaler;
 
@@ -10,6 +12,7 @@ public class TargetSelector : MonoBehaviour
 
     private Character GetCurUnit { get { return _context._dual.GetCurUnit; } } 
     private List<GameObject> targetList { get { return _context._dual.GetTargetList; } }
+    private GameObject[] GetPartyInfo { get { return _context._dual._currentParty; } } 
     private GameObject[] GetEnemyInfo { get {  return _context._dual._currentWaveEnemy; } }
 
     public void InitTargetSelector(EncounterContext ct)
@@ -29,7 +32,23 @@ public class TargetSelector : MonoBehaviour
 
     public void OnSelectEvent()
     {
-        SetTargetList();                                                                        // 타겟 리스트 설정
+        // 스킬 타입이 아군인지 적인지 구분
+        SkillMetaData data = GetCurUnit.ReturnAct(_context._dual._buttonSelectType);
+        SkillActionType type = data.actionType;
+
+
+        if(type == SkillActionType.Attack)         // 스킬 타입이 공격이라면
+        {
+            _context._sceneUI.GetInputSelect.CanSelectPlayer = false;    // 플레이어 선택 불가
+            _context._encounter._camMove.CurrentCameraTurn(GetCurUnit);  // 카메라 설정
+        }
+        else                                        // 스킬 타입이 공격이 아니라면
+        {
+            _context._sceneUI.GetInputSelect.CanSelectPlayer = true;    // 플레이어 선택 가능
+            _context._encounter._camMove.OnHealAndBuffCamera();  // 힐 및 버프 카메라 설정
+        }
+
+        SetTargetList(type);                                                                        // 타겟 리스트 설정
         OnCursorChange();
     }
 
@@ -113,45 +132,53 @@ public class TargetSelector : MonoBehaviour
         GetCurUnit.OnTurnEnd -= EndTurn;
     }
 
-    public void SetTargetList()
+    public void SetTargetList(SkillActionType type)
     {
         targetList.Clear();                                                                     // 타겟 리스트 초기화
 
         Character target = _context._encounter.GetSelectUnit();
         Character unit = GetCurUnit;
 
-        if (target.gameObject.CompareTag("Player")) return;
-
         SkillMetaData act = unit.ReturnAct(_context._dual._buttonSelectType);
-        int centerIndex = Array.IndexOf(GetEnemyInfo, target.gameObject);
+        int centerIndex = (type == SkillActionType.Attack) 
+            ? Array.IndexOf(GetEnemyInfo, target.gameObject) : Array.IndexOf(GetPartyInfo, target.gameObject);
 
-        Debug.Log($"현재 타입 {act} 센터 인덱스 : {centerIndex} {Time.deltaTime}");
-
-        // 적군이 한 명일 경우
-        if (act.range == 1) { targetList.Add(GetEnemyInfo[centerIndex]); }
-
-        // 만약 적군 전체 공격이라면
-        if (act.range == 5)
+        switch (act.range)
         {
-            // 살아있는 적 모두 추가
-            foreach (var enemy in GetEnemyInfo) if (enemy != null) targetList.Add(enemy);
-        }
+            case 1:
+                { 
+                    if(type == SkillActionType.Attack) targetList.Add(GetEnemyInfo[centerIndex]);
+                    else targetList.Add(GetPartyInfo[centerIndex]);
 
-        if (act.range == 3)
-        {
-            targetList.Add(GetEnemyInfo[centerIndex]);                                     // 기준 오브젝트 추가
-            int leftindex = centerIndex - 1;                                               // 왼쪽 인덱스
-            int rightindex = centerIndex + 1;                                              // 오른쪽 인덱스
+                    break;
+                }
 
-            if (leftindex >= 0 && GetEnemyInfo[leftindex] != null)                         // 인덱스 배열 범위 먼저 체크
-            {
-                targetList.Add(GetEnemyInfo[leftindex]);
-            }
+            case 3:
+                {
+                    targetList.Add(GetEnemyInfo[centerIndex]);                                     // 기준 오브젝트 추가
+                    int leftindex = centerIndex - 1;                                               // 왼쪽 인덱스
+                    int rightindex = centerIndex + 1;                                              // 오른쪽 인덱스
 
-            if (rightindex < GetEnemyInfo.Length && GetEnemyInfo[rightindex] != null)
-            {
-                targetList.Add(GetEnemyInfo[rightindex]);
-            }
+                    if (leftindex >= 0 && GetEnemyInfo[leftindex] != null)                         // 인덱스 배열 범위 먼저 체크
+                    {
+                        targetList.Add(GetEnemyInfo[leftindex]);
+                    }
+
+                    if (rightindex < GetEnemyInfo.Length && GetEnemyInfo[rightindex] != null)
+                    {
+                        targetList.Add(GetEnemyInfo[rightindex]);
+                    }
+
+                    break;
+                }
+
+            case 4:     // 4인은 예외 없이 플레이어 기준
+                { foreach (var party in GetPartyInfo) if (party != null) targetList.Add(party); break; }
+
+            case 5:
+                { foreach (var enemy in GetEnemyInfo) if (enemy != null) targetList.Add(enemy); break; }
+
+            default : throw new ArgumentOutOfRangeException(nameof(act.range), "기존 정해진 스킬 범위를 벗어났습니다.");
         }
     }
 

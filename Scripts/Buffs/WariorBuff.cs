@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.UI.CanvasScaler;
 
-public class WariorBuff : IBuffInfo
+public class WariorBuff : IBuffInfo, WhileAliveDuration
 {
     public Character castUnit { get; set; }
 
     public string InfoID => "Warior Buff";
+    public string GetBuffID => InfoID;
+
     public string InfoViewId => "워리어 버프";
     public Sprite buffSprite => castUnit.ReturnPlayerSprite(2);
 
@@ -15,31 +17,27 @@ public class WariorBuff : IBuffInfo
 
     public SkillActionType actionType => SkillActionType.Buff;
 
-    public void BuffRoutine()
+    public void OnBuffAdd()
     {
-        castUnit.OnDie += EndBuff;
-    }
+        var duration = this as WhileAliveDuration;
 
-    public void EndBuff(CharStats stats)
-    {
-        GameObject[] temp = Helper.DualManager._instanceParty;
-
-        for (int i = 0; i < temp.Length; i++)
+        foreach (var instance in Helper.DualManager._instanceParty)
         {
-            if (temp[i] is null) continue;
+            if (instance is null) continue;
 
-            Character ch = temp[i].GetComponent<Character>();
-            ch._charBuffManager.RemoveBuff(InfoID);
+            Character unit = instance.GetComponent<Character>();
+            unit._charBuffManager.AddBuff(this);
         }
 
-        castUnit.OnDie -= EndBuff;
+        duration.OnWhileAliveAdd(castUnit);
     }
+
 
     public CharStats.buffStats GetBuffStats()
     {
         return new CharStats.buffStats
         {
-            AtkBonus = castUnit.GetStats.GetBaseStats.baseATk * 0.1f
+            AtkBonus = castUnit.GetStats.GetBaseStats.baseATk * 0.2f
         };
     }
 

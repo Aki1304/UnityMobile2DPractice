@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO.Pipes;
 using UnityEngine;
 
 public class CharacterBuffManager
@@ -24,7 +25,6 @@ public class CharacterBuffManager
         }
 
         _activeBuffs.Add(buff);
-        buff.BuffRoutine();                         // 버프 루틴 넣고 가기
         unitBuffStats = CalculateTotalBuff();
     }
 
@@ -50,5 +50,12 @@ public class CharacterBuffManager
         OnUpdateBuff?.Invoke(_activeBuffs);
     }
 
-    
+    public void CheckTurnBasedBuff()
+    {
+        foreach(var buff in _activeBuffs)
+        {
+            if (buff is TurnBasedDuration duration) duration.OnTurnBaseRoutine(unit);
+        }
+    }
+
 }

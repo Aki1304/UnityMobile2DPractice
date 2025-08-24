@@ -17,6 +17,8 @@ public abstract class Character : MonoBehaviour
 
     protected CharStats charStats;
     public CharStats GetStats { get { return charStats; } }
+    public CharacterTable GetCharTable { get { return _charTable; } }
+    public SkillTable GetSkillTable { get { return _skillTable; } }
 
     public Action OnTakeDamage;
     public Action OnUltChange;
@@ -68,8 +70,8 @@ public abstract class Character : MonoBehaviour
     {
         GetStats.UpdateFinalStats();
     }
-    
 
+   
     public void TakeDamage(int dmg)
     {
         Debug.Log($"[TakeDamage] {this.gameObject.name}, µ¥¹ÌÁö: {dmg}");

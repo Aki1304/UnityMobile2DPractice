@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
+public enum EnemyType { Normal, Epic, Boss }
+
 public enum BattleState
 {
     None, PlayerTurn, EnemyTurn, Win, Lose

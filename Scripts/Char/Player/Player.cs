@@ -18,9 +18,9 @@ public abstract class Player : Character
         SkillType type = data.skillType;
 
         if(type == SkillType.skill)
-            Helper.DualManager.UpdateSkillPoijnt(-1); // or -1 based on usage
+            Helper.DualManager.UpdateSkillPoijnt(-1); 
         else if (type == SkillType.normal)
-            Helper.DualManager.UpdateSkillPoijnt(+1); // or -1 based on usage
+            Helper.DualManager.UpdateSkillPoijnt(+1); 
 
         yield return PlayEffect(targets, data);   // 이펙트 실행
 
@@ -56,7 +56,7 @@ public abstract class Player : Character
             // 이펙트 작업
             EffectDamage effect = obj.GetComponent<EffectDamage>();             // 공격해야 할 대상 전해주기
             effect.ResetEffectAnimator();                                       // 이펙트 애니메이터 초기화
-            effect.OnPassAnimEvent(caster, targets, data);                      // 이펙트가 애니메이션 이벤트를 통해 공격을 전달할 수 있도록 설정
+            effect.OnPassAnimEvent(caster, targets, data, i);                   // 이펙트가 애니메이션 이벤트를 통해 공격을 전달할 수 있도록 설정
 
             // 애니메이터 작업
             Animator animator = obj.GetComponent<Animator>();
@@ -115,7 +115,6 @@ public abstract class Player : Character
     protected List<Vector3> GetTargetCenters(List<GameObject> targets)
     {
         List<Vector3> centers = new List<Vector3>();
-
         foreach (var select in targets)
         {
             Collider col = select.GetComponent<Collider>();

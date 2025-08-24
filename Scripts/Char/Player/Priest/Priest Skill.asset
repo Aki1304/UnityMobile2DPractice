@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b045ee633d32e0e4385c3054657de068, type: 3}
+  m_Name: Priest Skill
+  m_EditorClassIdentifier: 
+  _animCon: {fileID: 9100000, guid: 293a1a52801fb294c88e4a10c59d3ab1, type: 2}
+  normalAttack:
+    hits: 1
+    range: 1
+    damage: 0.25
+    skillType: 0
+    type: 0
+    actionType: 0
+    effectType: 0
+    info: "\uB2E8\uC77C \uC801\uC5D0\uAC8C 1\uD68C\uB97C \uACF5\uACA9\uB825\uC758
+      25%\uB85C \uB370\uBBF8\uC9C0\uB97C \uAC00\uD569\uB2C8\uB2E4."
+  skill:
+    hits: 1
+    range: 1
+    damage: 0.5
+    skillType: 1
+    type: 0
+    actionType: 2
+    effectType: 0
+    info: "\uC9C0\uC815\uD55C \uB2E8\uC77C \uB300\uC0C1\uC744 \uCD94\uAC00 \uD589\uB3D9
+      \uB9AC\uC2A4\uD2B8\uC5D0 \uB123\uC2B5\uB2C8\uB2E4. \uC9C0\uC815\uD55C \uB2E8\uC77C
+      \uB300\uC0C1\uC5D0\uAC8C 2\uD134\uAC04 \uC2E0\uAD00 \uACF5\uACA9\uB825\uC758
+      50%\uB97C \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  ultimate:
+    hits: 1
+    range: 1
+    damage: 0.45
+    skillType: 2
+    type: 0
+    actionType: 2
+    effectType: 0
+    info: "\uC9C0\uC815\uD55C \uB2E8\uC77C \uB300\uC0C1\uC758 \uAD81\uADF9\uAE30
+      \uAC8C\uC774\uC9C0\uB97C 10pt \uCC44\uC6CC\uC90D\uB2C8\uB2E4. \uB610\uD55C,
+      \uC9C0\uC815\uD55C \uB2E8\uC77C \uB300\uC0C1\uC5D0\uAC8C \uD06C\uB9AC\uD2F0\uCEEC
+      \uD655\uB960 15%\uC640 \uD06C\uB9AC\uD2F0\uCEEC \uD53C\uD574\uB7C9\uC744 50%\uB9CC\uD07C
+      \uC99D\uAC00 \uC2DC\uD0A4\uB294 \uBC84\uD504\uB97C 2\uD134\uAC04 \uC81C\uACF5\uD569\uB2C8\uB2E4."
+  passive:
+    hits: 0
+    range: 0
+    damage: 0
+    skillType: 3
+    type: 1
+    actionType: 2
+    effectType: 0
+    info: "\uC0B4\uC544\uC788\uB294 \uB3D9\uC548 \uC544\uAD70\uC5D0\uAC8C \uC18D\uB3C4
+      10 \uC99D\uAC00 \uBC84\uD504\uB97C \uC801\uC6A9\uD569\uB2C8\uB2E4."

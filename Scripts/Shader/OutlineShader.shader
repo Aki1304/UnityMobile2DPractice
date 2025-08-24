@@ -1,5 +1,10 @@
 Shader "Sprites/Outline"
 {
+    /*
+     현재 사용 X
+     2d 스프라이트는 이 조건으로 사용 할 수 없음.
+    */
+
     Properties
     {
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}

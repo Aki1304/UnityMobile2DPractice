@@ -9,8 +9,6 @@ public class PartyManager : MonoBehaviour
     private GameObject[] _charParty;                                    // 오브젝트로 먼저 관리
     public GameObject[] GetPartyInfo {  get { return _charParty; } }
 
-    public CharStats[] GetPartyStatsInfo { get; set; }
-
     public void ResetParty()
     {
         for(int i = 0; i < 4; i++) _charParty[i] = null;
@@ -19,7 +17,6 @@ public class PartyManager : MonoBehaviour
     public void InitParty()
     {
         _charParty = new GameObject[4];
-        GetPartyStatsInfo = new CharStats[4];
     }
 
     public void ReadyParty()
@@ -27,23 +24,13 @@ public class PartyManager : MonoBehaviour
 
     }
 
-    public void Update()
-    {
-        // 테스트
-        if(Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            UpdateParty();
-        }
-    }
 
-    public void UpdateParty()           // 파티 배열 업데이트
+    public void UpdateParty(GameObject[] partyObjects)           // 파티 배열 업데이트
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < partyObjects.Length; i++)
         {
-            _charParty[i] = Helper.CharacterManager.GetCharPlayer[i];
-            Player player = _charParty[i].GetComponent<Player>();
-            GetPartyStatsInfo[i] = player.GetStats;
-            Debug.Log($"{ GetPartyStatsInfo[i]}");
+            GetPartyInfo[i] = partyObjects[i];                   // 파티 오브젝트 배열에 넣기
+            Debug.Log($"파티 업데이트: {partyObjects[i]}");
         }
     }
 
@@ -71,8 +58,5 @@ public class PartyManager : MonoBehaviour
             // 궁 게이지
             originStats.GetCurrentUlt = stats.GetCurrentUlt;
         }
-
-        // 스탯 동기화
-        UpdateParty();
     }
 }

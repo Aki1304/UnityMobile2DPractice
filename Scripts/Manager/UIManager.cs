@@ -13,6 +13,9 @@ public class UIManager : SingleManager<UIManager>
     [Header("버프 타입")]
     [SerializeField] public Sprite[] _typeSprite = new Sprite[2];
 
+    [Header("페이드 전용")]
+    [SerializeField] public FadeEffect _fadeEffect;
+
     private AllDamageUI _allDamageUi;
     public AllDamageUI GetAllDMGUI { get { return _allDamageUi; } set { _allDamageUi = value; } }
 

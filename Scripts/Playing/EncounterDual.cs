@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,12 @@ public class EncounterDual : MonoBehaviour
 {
     [Header("현재 턴 캐릭터 표시 오브젝트")]
     [SerializeField] public GameObject _indicaterTurn;
+    [SerializeField] private Character _currentChar;
+
+    // 풀 생성 위치
+    [Header("풀 생성 위치")]
+    public Transform _poolEffectParent;
+    public Transform _poolFontParent;
 
     [HideInInspector] public int[] _waveEnemyCount;               // 0 index => 1 라운드 1 index -> 2 라운드 2 ... 
     [HideInInspector] public int _currentWaveCount;
@@ -19,7 +26,6 @@ public class EncounterDual : MonoBehaviour
     [HideInInspector] public GameObject[] _currentWaveEnemy;
     [HideInInspector] public GameObject[] _currentParty;
 
-    [SerializeField] private Character _currentChar;
     public Character GetCurUnit { get { return _currentChar; } set { _currentChar = value; } }
 
     private BattleState _currenteState = BattleState.None;

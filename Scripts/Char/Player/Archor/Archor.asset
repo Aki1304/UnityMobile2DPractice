@@ -19,8 +19,8 @@ MonoBehaviour:
   dataCri: 30
   dataCriDmg: 100
   dataHP: 60
-  dataUlt: 40
-  dataSpeed: 130
+  dataUlt: 10
+  dataSpeed: 135
   _playerSprite: {fileID: -1098358757, guid: 1573b7e6633e1a5418e3bcdd3518e2d5, type: 3}
   _ultIconSprite: {fileID: 21300000, guid: dcfff57d2e28b3d4a8b1b41b604e773f, type: 3}
   _buffSprite: {fileID: 0}

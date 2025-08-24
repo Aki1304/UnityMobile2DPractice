@@ -47,10 +47,11 @@ public class EncounterStage : MonoBehaviour
     {
         Helper.DualManager.EnemySkillEffectPos = (_charPos[1] / 2f) + (_charPos[2] / 2f) + new Vector3(0, 1.2f, 0);                       // 플레이어 2번과 3번 사이 위치
 
-        Debug.Log($"적 스킬 이펙트 위치: {Helper.DualManager.EnemySkillEffectPos}");
 
         for (int i = 0; i < 4; i++)
         {
+            if (Helper.PartyManager.GetPartyInfo[i] is null) continue;                                                                  // 파티 정보가 없으면 다음으로 넘어감
+
             int minusScaleX = (i < 2) ? -1 : 1;          // 1번 2번 왼쪽    3번 4번 오른쪽
 
             GameObject charObject = Instantiate(Helper.PartyManager.GetPartyInfo[i], _playerInstanceTransform);
